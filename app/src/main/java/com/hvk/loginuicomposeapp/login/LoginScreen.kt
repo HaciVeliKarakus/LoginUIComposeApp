@@ -10,7 +10,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -31,7 +33,7 @@ fun LoginScreen(modifier: Modifier = Modifier) {
     val (password, setPassword) = rememberSaveable { mutableStateOf("") }
 
     Scaffold(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         contentWindowInsets = WindowInsets.statusBars
     ) { innerPadding ->
         Column(
@@ -50,7 +52,8 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                     vertical = 24.dp
                 )
                 .consumeWindowInsets(insets = WindowInsets.navigationBars)
-                .padding(top = 56.dp),
+                .padding(top = 56.dp)
+                .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(32.dp)
         ) {
             LoginHeaderSection(
